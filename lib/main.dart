@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'Layouts/HomeLayout.dart';
 
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // primaryColor: Colors.deepPurple,
-        // primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor: Colors.black54
+          scaffoldBackgroundColor: Colors.black54,
+          textTheme: TextTheme(
+              bodyLarge: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400 , fontFamily: AutofillHints.addressCityAndState),
+              displaySmall: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold ,fontFamily: AutofillHints.birthday))
       ),
       home: HomeLayout(),
     );
