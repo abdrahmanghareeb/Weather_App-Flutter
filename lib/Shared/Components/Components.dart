@@ -45,3 +45,17 @@ Widget enhancedBackground(){
     ],
   );
 }
+
+Widget sunCard({@required context ,required String asset ,required String title ,required String time }){
+  return Row(
+    children: [
+      Image.asset(asset,width: 60),
+      Column(
+        children: [
+          Text(title, style : Theme.of(context).textTheme.bodyLarge),
+          Text(time, style : Theme.of(context).textTheme.bodyLarge),
+        ],
+      )
+    ],
+  );
+}
