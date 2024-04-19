@@ -1,7 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Widget enhancedBackground(){
   return  Stack(
@@ -58,4 +58,36 @@ Widget sunCard({@required context ,required String asset ,required String title 
       )
     ],
   );
+}
+
+String convertToCelcius({@required temp}){
+  return "${(temp - 273).round()}°C";
+}
+
+String convertToReadableDateAndTime (int timestamp) {
+  var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+  var time =  dateTime.toLocal().toString();
+   dateTime = DateTime.parse(time);
+  var formatter = DateFormat("MMMM d, yyyy - hh:mm:ss a");
+  return formatter.format(dateTime);
+}
+
+String convertToReadableTime (int timestamp) {
+  var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+  var time =  dateTime.toLocal().toString();
+  dateTime = DateTime.parse(time);
+  var formatter = DateFormat("hh:mm a");
+  return formatter.format(dateTime);
+}
+
+String getGreeting(String timestamp) {
+  var dateTime = DateTime.parse(timestamp);
+  var hour = dateTime.hour;
+  if (hour >= 6 && hour < 12) {
+    return "Good Morning";
+  } else if (hour >= 12 && hour < 18) {
+    return "Good Afternoon";
+  } else {
+    return "Good Evening";
+  }
 }

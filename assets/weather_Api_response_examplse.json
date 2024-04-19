@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": 31.2588,
+    "lat": 30.5765
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 287.28,
+    "feels_like": 287.2,
+    "temp_min": 287.28,
+    "temp_max": 287.28,
+    "pressure": 1014,
+    "humidity": 94,
+    "sea_level": 1014,
+    "grnd_level": 1013
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 1.6,
+    "deg": 342,
+    "gust": 1.59
+  },
+  "clouds": {
+    "all": 0
+  },
+  "dt": 1713487616,
+  "sys": {
+    "country": "EG",
+    "sunrise": 1713496965,
+    "sunset": 1713543894
+  },
+  "timezone": 7200,
+  "id": 354076,
+  "name": "Kafr Shukr",
+  "cod": 200
+}
