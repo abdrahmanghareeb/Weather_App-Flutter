@@ -60,10 +60,6 @@ Widget sunCard({@required context ,required String asset ,required String title 
   );
 }
 
-String convertToCelcius({@required temp}){
-  return "${(temp - 273).round()}°C";
-}
-
 String convertToReadableDateAndTime (int timestamp) {
   var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
   var time =  dateTime.toLocal().toString();

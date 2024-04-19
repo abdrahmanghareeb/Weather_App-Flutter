@@ -22,7 +22,7 @@ class HomeLayout extends StatelessWidget {
             enhancedBackground(),
             ConditionalBuilder(
               condition: cubit.response == null,
-              builder: (context) => Center(child: CircularProgressIndicator()),
+              builder: (context) => const Center(child: CircularProgressIndicator()),
               fallback: (context) => Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: SingleChildScrollView(
@@ -55,7 +55,7 @@ class HomeLayout extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          '${convertToCelcius(temp: cubit.response["main"]["temp"])}',
+                          '${cubit.response["main"]["temp"].round()}°C',
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 55,
@@ -64,7 +64,7 @@ class HomeLayout extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          "${cubit.response["weather"][0]["main"].toString()}",
+                          cubit.response["weather"][0]["main"].toString(),
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 25,
@@ -89,17 +89,17 @@ class HomeLayout extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              sunCard(context: context ,title: "sunrise" ,time: "${convertToReadableTime(cubit.response["sys"]["sunrise"])}" ,asset: "assets/11.png"),
+                              sunCard(context: context ,title: "sunrise" ,time: convertToReadableTime(cubit.response["sys"]["sunrise"]) ,asset: "assets/11.png"),
                               const SizedBox(height: 30),
-                              sunCard(context: context ,title: "max" ,time: "${convertToCelcius(temp: cubit.response["main"]["temp_max"])}" ,asset: "assets/13.png"),
+                              sunCard(context: context ,title: "max" ,time: '${cubit.response["main"]["temp_max"].round()}°C' ,asset: "assets/13.png"),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              sunCard(context: context ,title: "sunset" ,time: "${convertToReadableTime(cubit.response["sys"]["sunset"])}" ,asset: "assets/12.png"),
+                              sunCard(context: context ,title: "sunset" ,time: convertToReadableTime(cubit.response["sys"]["sunset"]) ,asset: "assets/12.png"),
                               const SizedBox(height: 30),
-                              sunCard(context: context ,title: "min" ,time: "${convertToCelcius(temp: cubit.response["main"]["temp_min"])}" ,asset: "assets/14.png"),
+                              sunCard(context: context ,title: "min" ,time: '${cubit.response["main"]["temp_min"].round()}°C',asset: "assets/14.png"),
                             ],
                           ),
                            ],

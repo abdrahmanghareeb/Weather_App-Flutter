@@ -37,7 +37,23 @@ class WeatherCubit extends Cubit<WeatherState> {
       await dioHelper.getResponse(method: "data/2.5/weather", query: {
         "appid": appid,
         "lon"  : longitude,
-        "lat"  : latitude
+        "lat"  : latitude,
+        "units" : "metric",
+      }).
+      then((value) {
+        response = value.data;
+        print(value.data.toString());
+        emit(getResponseSucessState());
+      }).onError((error, stackTrace) {
+        emit(getResponseErrorState(error));
+      });
+    }
+    Future<void> get_API_ResponseBySearch({@required cityName}) async {
+      emit(getResponseLoadingState());
+      await dioHelper.getResponse(method: "data/2.5/weather", query: {
+        "appid": appid,
+        "units" : "metric",
+        "q" : "$cityName"
       }).
       then((value) {
         response = value.data;
