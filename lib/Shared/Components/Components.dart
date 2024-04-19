@@ -46,23 +46,38 @@ Widget enhancedBackground() {
   );
 }
 
-Widget sunCard(
-    {@required context,
-    required String asset,
-    required String title,
-    required String time}) {
+Widget sunCard({
+  asset,
+  @required context,
+  required String title,
+  required String time,
+}) {
   return Row(
     children: [
-      Image.asset(asset, width: 60),
-      Column(
-        children: [
-          Text(title, style: Theme.of(context).textTheme.bodyLarge),
-          Text(time, style: Theme.of(context).textTheme.bodyLarge),
-        ],
+      asset != null ? Image.asset(asset, width: 60) : SizedBox(width: 60),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              time,
+              style: Theme.of(context).textTheme.bodyLarge,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       )
     ],
   );
 }
+
 
 Widget getWeatherIcon(int code) {
   switch (code) {
