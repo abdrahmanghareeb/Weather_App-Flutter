@@ -48,6 +48,7 @@ class WeatherCubit extends Cubit<WeatherState> {
         emit(getResponseErrorState(error));
       });
     }
+    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
     Future<void> get_API_ResponseBySearch({@required cityName}) async {
       emit(getResponseLoadingState());
       await dioHelper.getResponse(method: "data/2.5/weather", query: {

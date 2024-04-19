@@ -32,9 +32,16 @@ class HomeLayout extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "📍 ${cubit.response["name"]}, ${cubit.response["sys"]["country"]}",
-                        style: Theme.of(context).textTheme.bodyLarge,
+                      TextFormField(
+                        onChanged: (value) {
+                          if(value.isNotEmpty) {
+                            cubit.get_API_ResponseBySearch(cityName: value);
+                          }
+                        },
+                        decoration: InputDecoration( label: Text(
+                          "📍 ${cubit.response["name"]}, ${cubit.response["sys"]["country"]}",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        )),
                       ),
                       SizedBox(
                         height: 10,
@@ -45,11 +52,7 @@ class HomeLayout extends StatelessWidget {
                         height: 10,
                       ),
                       Center(
-                          child: Image.asset(
-                        "assets/3.png",
-                        fit: BoxFit.fill,
-                        height: 250,
-                      )),
+                          child: getWeatherIcon(cubit.response["cod"])),
                       SizedBox(
                         height: 10,
                       ),
