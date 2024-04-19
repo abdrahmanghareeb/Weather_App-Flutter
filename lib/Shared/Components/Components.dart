@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-Widget enhancedBackground(){
-  return  Stack(
+Widget enhancedBackground() {
+  return Stack(
     children: [
       Align(
         alignment: const AlignmentDirectional(0, -1.2),
@@ -27,7 +27,7 @@ Widget enhancedBackground(){
         ),
       ),
       Align(
-        alignment: const AlignmentDirectional(0,1),
+        alignment: const AlignmentDirectional(0, 1),
         child: Container(
           height: 300,
           width: 600,
@@ -46,41 +46,97 @@ Widget enhancedBackground(){
   );
 }
 
-Widget sunCard({@required context ,required String asset ,required String title ,required String time }){
+Widget sunCard(
+    {@required context,
+    required String asset,
+    required String title,
+    required String time}) {
   return Row(
     children: [
-      Image.asset(asset,width: 60),
+      Image.asset(asset, width: 60),
       Column(
         children: [
-          Text(title, style : Theme.of(context).textTheme.bodyLarge),
-          Text(time, style : Theme.of(context).textTheme.bodyLarge),
+          Text(title, style: Theme.of(context).textTheme.bodyLarge),
+          Text(time, style: Theme.of(context).textTheme.bodyLarge),
         ],
       )
     ],
   );
 }
 
-String convertToCelcius({@required temp}){
-  return "${(temp - 273).round()}°C";
+Widget getWeatherIcon(int code) {
+  switch (code) {
+    case >= 200 && < 300:
+      return Image.asset(
+        'assets/1.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case >= 300 && < 400:
+      return Image.asset(
+        'assets/2.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case >= 500 && < 600:
+      return Image.asset(
+        'assets/3.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case >= 600 && < 700:
+      return Image.asset(
+        'assets/4.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case >= 700 && < 800:
+      return Image.asset(
+        'assets/5.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case == 800:
+      return Image.asset(
+        'assets/6.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    case > 800 && <= 804:
+      return Image.asset(
+        'assets/7.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+    default:
+      return Image.asset(
+        'assets/7.png',
+        fit: BoxFit.fill,
+        height: 250,
+      );
+  }
 }
 
-String convertToReadableDateAndTime (int timestamp) {
+String convertToReadableDateAndTime(int timestamp) {
   var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-  var time =  dateTime.toLocal().toString();
-   dateTime = DateTime.parse(time);
+  var time = dateTime.toLocal().toString();
+  dateTime = DateTime.parse(time);
   var formatter = DateFormat("MMMM d, yyyy - hh:mm:ss a");
   return formatter.format(dateTime);
 }
 
-String convertToReadableTime (int timestamp) {
+var timestamp; // not best practice
+String convertToReadableTime(int timestamp) {
+  timestamp = timestamp;
   var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-  var time =  dateTime.toLocal().toString();
+  var time = dateTime.toLocal().toString();
   dateTime = DateTime.parse(time);
   var formatter = DateFormat("hh:mm a");
   return formatter.format(dateTime);
 }
 
-String getGreeting(String timestamp) {
+String getGreeting() {
+  timestamp = convertToReadableTime(timestamp);
   var dateTime = DateTime.parse(timestamp);
   var hour = dateTime.hour;
   if (hour >= 6 && hour < 12) {
