@@ -1,16 +1,20 @@
 # weather_app
 
-A new Flutter project.
+=> A new flutter learning app 
 
-## Getting Started
+=> Learned API integration using Dio package,
+   and accessing loacation using geolocator
+   
+   
+=> The app is executed using clean architecture  and bloc state management.
 
-This project is a starting point for a Flutter application.
+## package used 
+  conditional_builder_null_safety: ^0.0.6
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.4
+  geolocator: ^11.0.0
+  dio: ^5.4.3
+  intl: ^0.19.0
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##Contacts
+for any questions you can reach me on : https://www.linkedin.com/in/abdelrahman-ghareeb-55733a21b/
