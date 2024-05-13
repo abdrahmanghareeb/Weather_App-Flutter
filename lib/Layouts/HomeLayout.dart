@@ -46,13 +46,13 @@ class HomeLayout extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text("welcome...",
-                          style: Theme.of(context).textTheme.displaySmall),
+                      Text("Hello Buddy...",
+                          style: Theme.of(context).textTheme.displaySmall, overflow: TextOverflow.ellipsis, maxLines: 1,),
                       SizedBox(
                         height: 10,
                       ),
                       Center(
-                          child: getWeatherIcon(cubit.response["cod"])),
+                          child: getWeatherIcon(cubit.response["weather"][0]["id"])),
                       SizedBox(
                         height: 10,
                       ),
@@ -87,23 +87,31 @@ class HomeLayout extends StatelessWidget {
                       const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              sunCard(context: context ,title: "sunrise" ,time: convertToReadableTime(cubit.response["sys"]["sunrise"]) ,asset: "assets/11.png"),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                sunCard(context: context ,title: "sunrise" ,time: convertToReadableTime(cubit.response["sys"]["sunrise"]) ,asset: "assets/11.png"),
+                                const SizedBox(height: 30),
+                                sunCard(context: context ,title: "max" ,time: '${cubit.response["main"]["temp_max"].round()}°C' ,asset: "assets/13.png"),
                               const SizedBox(height: 30),
-                              sunCard(context: context ,title: "max" ,time: '${cubit.response["main"]["temp_max"].round()}°C' ,asset: "assets/13.png"),
-                            ],
+                                sunCard(context: context ,title: "humidity" ,time: '${cubit.response["main"]["humidity"].round()}%'),
+                              ],
+                            ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              sunCard(context: context ,title: "sunset" ,time: convertToReadableTime(cubit.response["sys"]["sunset"]) ,asset: "assets/12.png"),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                sunCard(context: context ,title: "sunset" ,time: convertToReadableTime(cubit.response["sys"]["sunset"]) ,asset: "assets/12.png"),
+                                const SizedBox(height: 30),
+                                sunCard(context: context ,title: "min" ,time: '${cubit.response["main"]["temp_min"].round()}°C',asset: "assets/14.png"),
                               const SizedBox(height: 30),
-                              sunCard(context: context ,title: "min" ,time: '${cubit.response["main"]["temp_min"].round()}°C',asset: "assets/14.png"),
-                            ],
+                                sunCard(context: context ,title: "speed" ,time: '${cubit.response["wind"]["speed"].round()}km/h'),
+                              ],
+                            ),
                           ),
                            ],
                       ),
